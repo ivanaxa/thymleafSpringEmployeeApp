@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmls:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Save Employee</title>
+	<!--link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/-->
+	<link rel="stylesheet" 
+		th:href="@{/css/bootstrap.css}"/>
+	 <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"-->
+	<link rel="stylesheet" 
+		th:href="@{/css/demo.css}"/>
+	<!-- @symbol reference context path of your application (app root) -->
+</head>
+<body>
+	<div class="container">
+	<p th:text="'Time on the server is: ' + ${theDate}" class="funny"/>
+	</div>
+	<hr>
+	<div class="container">
+	<h3 class="h4 mb-4">Save Employee</h3>
+	
+	<form action="#" th:action="@{/employees/save}"
+			th:object="${employee}" method="POST">
+			<!-- send form data to  /employees/save-->
+			<!-- {employee} references EmployeeController theMode.addAttribute("employee", theEmployee)-->
+			
+			<!--  now defining input fields -->
+			<!-- add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}"/>
+			<!-- hideen form field required for update; this binds to the model attribtue and tells your app which employee to update -->
+			<input type="text" th:field="*{firstName}"
+				class="form-control mb-4, cole-4" placeholder="First Name">
+			<br>
+			<input type="text" th:field="*{lastName}"
+				class="form-control mb-4, cole-4" placeholder="Last Name">
+			<br>
+			<input type="text" th:field="*{email}"
+				class="form-control mb-4, cole-4" placeholder="Email">
+			<br>
+			<button type="submit" class="btn btn-info col-2">Save</button>
+			
+	
+	</form>
+	
+	<hr>
+	<a th:href="@{/employees/list}">Back to Employees List</a>
+	</div>
+	
+</body>
+
+</html>
